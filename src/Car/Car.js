@@ -1,25 +1,21 @@
 import React from "react";
+import './Car.css';
 
 function Car(props) {
+    const inputStyle = ['input'];
+
+    if (props.name !== '') {
+        inputStyle.push('blue');
+    } else {
+        inputStyle.push('red');
+    }
+
     return (
-        <div style={
-            {
-                border: '2px solid green',
-                margin: '0px auto',
-                marginTop: '10px',
-                padding: '10px',
-                width: '250px',
-                borderRadius: '10px',
-            }
-        }>
+        <div className={'Car'}>
             <div>Car name: <strong>{props.name}</strong></div>
             <div>Year: <strong>{props.year}</strong></div>
-            <input type="text" onChange={props.onChangeNameCar} value={props.name}/>
-            <button onClick={props.onDelete} style={
-                {
-                    color: "red"
-                }
-            }>Delete
+            <input type="text" onChange={props.onChangeNameCar} value={props.name} className={inputStyle.join(' ')}/>
+            <button onClick={props.onDelete} className={'ButtonDelete'}>Delete
             </button>
         </div>
     )
