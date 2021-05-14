@@ -14,11 +14,15 @@ class App extends Component {
     };
 
     changeTitleHandler = (newTitle) => {
-
         this.setState({
             pageTitle: newTitle,
         })
     };
+    handleInput = (e) => {
+        this.setState({
+            pageTitle: e.target.value,
+        })
+    }
 
     render() {
         const divStyle = {
@@ -29,7 +33,7 @@ class App extends Component {
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
-
+                <input type="text" onChange={this.handleInput}/>
                 <button onClick={this.changeTitleHandler.bind(this, 'Changed')}>Change title</button>
                 <Car name={cars[0].name}
                      year={cars[0].year}
