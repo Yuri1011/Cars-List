@@ -4,15 +4,18 @@ import Car from "./Car/Car";
 
 class App extends Component {
 
-    state = {
-        cars: [
-            {name: 'Ford', year: 2018},
-            {name: 'Audi', year: 2016},
-            {name: 'Mazda', year: 2010},
-        ],
-        pageTitle: 'Hello Cars',
-        showCars: false,
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            cars: [
+                {name: 'Ford', year: 2018},
+                {name: 'Audi', year: 2016},
+                {name: 'Mazda', year: 2010},
+            ],
+            pageTitle: 'Hello Cars',
+            showCars: false,
+        };
+    }
 
     toggleListCarsHandler = () => {
         this.setState({
@@ -29,12 +32,12 @@ class App extends Component {
             cars: cars,
         });
     };
+
     deleteCarHandler = (index) => {
         const cars = this.state.cars.concat();
         cars.splice(index, 1);
         this.setState({cars});
     };
-
 
     render() {
         const divStyle = {
@@ -44,7 +47,9 @@ class App extends Component {
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
-                <button onClick={this.toggleListCarsHandler}>Toggle Cars</button>
+                <button onClick={this.toggleListCarsHandler}
+                        className={'toggleButton'}>Toggle Cars
+                </button>
 
                 {
                     this.state.showCars ?
